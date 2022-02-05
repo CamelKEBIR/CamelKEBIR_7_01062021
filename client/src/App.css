@@ -333,6 +333,19 @@ button {
   cursor: pointer;
 }
 
+.desactivateAccount{
+  color: black;
+  background-color:rgb(1, 139, 127);
+  cursor: pointer;
+
+}
+
+.basicInfo{
+
+  display: flex;
+  flex-direction: column;
+}
+
 /* LOGIN */
 
 .loginContainer {

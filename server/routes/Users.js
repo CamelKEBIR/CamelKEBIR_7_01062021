@@ -1,9 +1,12 @@
+
 const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { validateToken } = require("../middlewares/AuthMiddleware");
 const { sign } = require("jsonwebtoken");
+
+
 
 router.post("/", async (req, res) => {
   const { username, password, email, firstname, lastname } = req.body;
@@ -28,7 +31,7 @@ router.post("/login", async (req, res) => {
   if (!user) res.json({ error: "User Doesn't Exist" });
 
   bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Username And Password Combination" });
+    if (!match) res.json({ error: "Mauvaise Combinaison" });
 
     const accessToken = sign(
       { username: user.username, id: user.id },
@@ -57,7 +60,7 @@ router.put("/changepassword", validateToken, async (req, res) => {
   const user = await Users.findOne({ where: { username: req.user.username } });
 
   bcrypt.compare(oldPassword, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Password Entered!" });
+    if (!match) res.json({ error: "Mot de passse erroné!" });
 
     bcrypt.hash(newPassword, 10).then((hash) => {
       Users.update(
@@ -68,5 +71,18 @@ router.put("/changepassword", validateToken, async (req, res) => {
     });
   });
 });
+
+
+router.delete('/:deleteId',validateToken, async (req, res) => {
+  
+  const userId = req.user.id;
+  await Users.destroy({
+    where: {
+      id: userId,
+    },
+  });
+  
+})
+
 
 module.exports = router;

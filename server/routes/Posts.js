@@ -26,6 +26,15 @@ router.get("/byId/:id", async (req, res) =>{
     res.json(post)
 })
 
+router.get("/byuserId/:id", async (req, res) => {
+  const id = req.params.id;
+  const listOfPosts = await Posts.findAll({
+    where: { UserId: id },
+    include: [Likes],
+  });
+  res.json(listOfPosts);
+});
+
 router.put("/title", async (req, res) => {
   const { newTitle, id } = req.body;
   await Posts.update({ title: newTitle }, { where: { id: id } });
