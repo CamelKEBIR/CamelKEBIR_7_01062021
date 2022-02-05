@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, useHistory } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
-import { Image } from "cloudinary-react";
+
 
 function Profile() {
   let { id } = useParams();
@@ -16,8 +16,6 @@ function Profile() {
     });
 
   }, []);
-
-  
 
 
   return (
