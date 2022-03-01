@@ -28,7 +28,11 @@ la suppression du compte doit être possible
 
 l’accès à un forum où les salariés publient des contenus multimédias doit être présent 
 
-l’accès à un forum où les salariés publient des textes doit être présent 
+la possibilité d'ajouter des commentaires sur chaques posts
+
+la possibilité de liké et disliké des posts
+
+
 
 
 # Technologies, Modules et outils utilisés pour la réalisation
