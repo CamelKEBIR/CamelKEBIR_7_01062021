@@ -28,7 +28,7 @@ function CreatePost() {
             formData.append("file", image[0])
             formData.append("upload_preset", "groupomania_project")
 
-        Axios.post(`https://api.cloudinary.com/v1_1/gr0upomania/image/upload`, 
+        Axios.post(`https://api.cloudinary.com/v1_1/<name_of_storage_space>/image/upload`, 
         formData
         ).then((response) => {
             const fileName = response.data.public_id
